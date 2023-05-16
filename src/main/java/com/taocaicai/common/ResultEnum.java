@@ -1,6 +1,6 @@
 package com.taocaicai.common;
 
-/**
+/** 统一的结果的枚举
  * @author Oakley
  * @project controller-example
  * @created 2023-05-15 10:06:10:06

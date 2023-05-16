@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * 统一返回数据结构
  * @author Oakley
  * @project controller-example
  * @created 2023-05-15 10:08:10:08
