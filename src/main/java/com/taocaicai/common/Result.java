@@ -35,6 +35,9 @@ public class Result<T> {
     public static Result<?> failed(String message) {
         return new Result<>(ResultEnum.COMMON_FAILED.getCode(), message, null);
     }
+    public static Result<?> failed(Integer code,String message) {
+        return new Result<>(code, message, null);
+    }
 
     public static Result<?> failed(IResult errorResult) {
         return new Result<>(errorResult.getCode(), errorResult.getMessage(), null);

@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
-/**
+/** 处理返回字符串异常问题 方式二（推荐此方法）
  * @author Oakley
  * @project controller-example
  * @created 2023-05-15 10:33:10:33
@@ -17,6 +17,11 @@ import java.util.List;
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
 
+    /**
+     *
+     * 当处理字符串类型时，会抛出 xxx.包装类 cannot be cast to java.lang.String 的类型转换的异常
+     * @param converters initially an empty list of converters
+     */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         for (int i = 0; i < converters.size(); i++) {

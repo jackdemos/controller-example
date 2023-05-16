@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
  * 统一处理包装返回结果
+ *
  * @author Oakley
  * @project controller-example
  * @created 2023-05-15 10:17:10:17
@@ -19,7 +20,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @since 0.0.1
  */
 // 如果引入了swagger或knife4j的文档生成组件，这里需要仅扫描自己项目的包，否则文档无法正常生成
-@RestControllerAdvice(basePackages = "com.taocaicai.controller")
+@RestControllerAdvice(basePackages = "com.taocaicai")
 public class ResponseAdvice implements ResponseBodyAdvice<Object> {
 
     @Autowired
@@ -38,9 +39,10 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
             return body;
         }
         // 如果返回值是String类型，那就手动把Result对象转换成JSON字符串
-       /* if (body instanceof String) {
+        /* 处理返回字符串异常问题 方式一（不推荐推荐）*/
+        /*if (body instanceof String) {
             try {
-                return Result.success(this.objectMapper.writeValueAsString(body));
+                return this.objectMapper.writeValueAsString(Result.success(body));
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
